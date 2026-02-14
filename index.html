@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Love Animation ❤️</title>
+<title>Valentine Surprise ❤️</title>
 
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -23,25 +23,28 @@ body{
   color:white;
 }
 
-/* Hide radios */
-input{display:none}
+/* Hide radio buttons */
+input[type="radio"]{
+  display:none;
+}
 
 /* Sections */
 .section{
   position:absolute;
   width:90%;
-  max-width:520px;
+  max-width:500px;
   padding:40px;
   text-align:center;
   background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(20px);
-  border-radius:25px;
+  backdrop-filter:blur(15px);
+  border-radius:20px;
   box-shadow:0 15px 40px rgba(0,0,0,0.3);
   opacity:0;
-  transform:scale(.8);
-  transition:.6s ease;
+  transform:scale(0.8);
+  transition:0.5s ease;
 }
 
+/* Show active section */
 #step1:checked ~ .s1,
 #step2:checked ~ .s2,
 #step3:checked ~ .s3,
@@ -49,63 +52,35 @@ input{display:none}
 #step5:checked ~ .s5{
   opacity:1;
   transform:scale(1);
-  z-index:2;
+  z-index:1;
 }
 
 /* Buttons */
 .btn{
   display:inline-block;
   margin-top:25px;
-  padding:14px 32px;
-  border-radius:50px;
+  padding:12px 28px;
+  border-radius:30px;
+  background:white;
+  color:#ff4e91;
   font-weight:bold;
   cursor:pointer;
-  transition:.4s;
-  text-decoration:none;
+  transition:0.3s;
 }
 
-.yes-btn{
-  background:white;
-  color:#ff2e63;
-  position:relative;
-  z-index:3;
+.btn:hover{
+  transform:scale(1.1);
 }
 
-.no-btn{
+/* NO Button escape */
+.no{
   background:#ff2e63;
   color:white;
   position:relative;
 }
 
-.no-btn:hover{
-  transform:translate(140px,-70px) rotate(20deg);
-}
-
-/* YES flying animation */
-#step4:checked ~ .yes-fly{
-  animation:flyTopRight 1.2s forwards ease-in-out;
-  pointer-events:auto;
-}
-
-.yes-fly{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  pointer-events:none;
-}
-
-@keyframes flyTopRight{
-  0%{
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%) scale(1);
-  }
-  100%{
-    top:20px;
-    left:90%;
-    transform:translate(-50%,0) scale(1.2);
-  }
+.no:hover{
+  transform:translate(120px,-60px) rotate(15deg);
 }
 
 /* Floating Hearts */
@@ -113,27 +88,33 @@ input{display:none}
   position:absolute;
   bottom:-20px;
   font-size:22px;
-  animation:float 7s infinite linear;
+  animation:float 6s linear infinite;
 }
 
 @keyframes float{
-  0%{transform:translateY(0);opacity:1}
-  100%{transform:translateY(-110vh);opacity:0}
+  0%{transform:translateY(0); opacity:1;}
+  100%{transform:translateY(-100vh); opacity:0;}
 }
 
-.heart:nth-child(1){left:10%;animation-delay:0s}
-.heart:nth-child(2){left:25%;animation-delay:2s}
-.heart:nth-child(3){left:50%;animation-delay:4s}
-.heart:nth-child(4){left:70%;animation-delay:1s}
-.heart:nth-child(5){left:85%;animation-delay:3s}
+.heart:nth-child(1){left:10%; animation-delay:0s;}
+.heart:nth-child(2){left:30%; animation-delay:2s;}
+.heart:nth-child(3){left:50%; animation-delay:4s;}
+.heart:nth-child(4){left:70%; animation-delay:1s;}
+.heart:nth-child(5){left:90%; animation-delay:3s;}
 
-h1{margin-bottom:15px}
-p{line-height:1.6}
+h1{
+  margin-bottom:15px;
+}
+
+p{
+  font-size:1.1rem;
+  line-height:1.6;
+}
 </style>
 </head>
 <body>
 
-<!-- Step Controls -->
+<!-- RADIO CONTROLS (IMPORTANT: MUST BE BEFORE SECTIONS) -->
 <input type="radio" name="steps" id="step1" checked>
 <input type="radio" name="steps" id="step2">
 <input type="radio" name="steps" id="step3">
@@ -143,43 +124,36 @@ p{line-height:1.6}
 <!-- STEP 1 -->
 <div class="section s1">
   <h1>Hey Beautiful ❤️</h1>
-  <p>I created something special for you...</p>
-  <label for="step2" class="btn yes-btn">Start 💖</label>
+  <p>I made something special for you...</p>
+  <label for="step2" class="btn">Start 💖</label>
 </div>
 
 <!-- STEP 2 -->
 <div class="section s2">
   <h1>You Know What?</h1>
-  <p>You are my best notification and my permanent commit 💌</p>
-  <label for="step3" class="btn yes-btn">Continue 💕</label>
+  <p>You are my best update and favorite notification 💌</p>
+  <label for="step3" class="btn">Continue 💕</label>
 </div>
 
 <!-- STEP 3 -->
 <div class="section s3">
   <h1>Important Question 😌</h1>
   <p>Will you be my Valentine?</p>
-
-  <label for="step4" class="btn yes-btn">YES 💖</label>
-  <button class="btn no-btn">NO 😏</button>
+  <label for="step4" class="btn">YES 💖</label>
+  <button class="btn no">NO 😏</button>
 </div>
-
-<!-- Flying YES Button (Appears After Click) -->
-<label for="step5" class="btn yes-btn yes-fly">Click Me 💘</label>
 
 <!-- STEP 4 -->
 <div class="section s4">
-  <h1>Catch Me 😍</h1>
-  <p>The YES flew to the top corner... click it there 💖</p>
+  <h1>I Knew It 😍</h1>
+  <p>You just made my heart explode with happiness ❤️</p>
+  <label for="step5" class="btn">Final Surprise 🎁</label>
 </div>
 
 <!-- STEP 5 -->
 <div class="section s5">
   <h1>Forever Starts Now 💍</h1>
-  <p>
-    No bugs. No crashes.  
-    Only love forever ❤️  
-    Happy Valentine’s Day 💕
-  </p>
+  <p>No bugs. No crashes. Only love forever ❤️</p>
 </div>
 
 <!-- Floating Hearts -->
